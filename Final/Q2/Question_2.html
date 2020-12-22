@@ -1,0 +1,28 @@
+<!DOCTYPE HTML>
+
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Read Page</title>
+</head>
+
+<body>
+    <input type="file" id="fileinput">
+    <button id="Read">Prochitaj</button>
+    <pre id="contents"></pre>
+    <script>
+        document.querySelector("#Read").addEventListener('click', function () {
+            let file = document.querySelector("#fileinput").files[0];
+            let reader = new FileReader();
+            reader.addEventListener('load', function (a) {
+                let text = a.target.result;
+                document.querySelector("#contents").textContent = text;
+            });
+            reader.readAsText(file)
+        });
+    </script>
+</body>
+
+</html>
